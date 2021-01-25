@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useSnackbar } from '../../context/snackbar';
+
 import firebase from 'firebase';
 
 import Button from '@material-ui/core/Button';
@@ -12,6 +14,7 @@ export default function LoginModal({ handleClose }) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { setOpen, setMessage, setStatus } = useSnackbar();
 
     function handleSubmit() {
         firebase.auth().signInWithEmailAndPassword(email, password)
@@ -19,6 +22,10 @@ export default function LoginModal({ handleClose }) {
                 handleClose();
             })
             .catch((err) => {
+                const { message } = err;
+                setStatus('error');
+                setMessage(message)
+                setOpen(true);
                 console.log(err);
             })
     }

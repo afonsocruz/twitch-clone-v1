@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+
 import UserProvider from './context/user';
+import SnackbarProvider from './context/snackbar';
+
 import firebase from 'firebase';
 
 const firebaseConfig = {
@@ -18,9 +21,11 @@ firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserProvider>
-      <App />
-    </UserProvider>
+    <SnackbarProvider>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </SnackbarProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
