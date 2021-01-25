@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, BrowserRouter as Router } from 'react-router-dom';
 
+import { useUser } from '../../context/user';
+
 import { NavbarStyle } from './styles'
 
 import { TextField, Button, Modal } from '@material-ui/core'
@@ -11,6 +13,12 @@ import RegisterModal from '../RegisterModal';
 import firebase from 'firebase';
 
 export default function Navbar() {
+
+    const { user, setUser } = useUser();
+
+    useEffect(() => {
+        console.log(user);
+    }, [user])
 
     const [signInOpen, setSignInOpen] = useState(false);
     const [signUpOpen, setSignUpOpen] = useState(false);
@@ -54,15 +62,26 @@ export default function Navbar() {
                 </form>
                 
                 <div className="userBtns">
-                    <Button variant="contained" color="primary" onClick={handleSignInOpen}>
-                        Login
-                    </Button>
-                    <Button variant="contained" color="primary" onClick={handleSignUpOpen}>
-                        Sign up
-                    </Button>
-                    <Button variant="contained" color="primary" onClick={handleLogout}>
-                        Logout
-                    </Button>
+                    {
+                        user != null ? (
+                            <>
+                                <p>Bem vindo <span>{user.email}!</span></p>
+                                <Button variant="contained" color="primary" onClick={handleLogout}>
+                                    Logout
+                                </Button>
+                            </>
+                        ): 
+                        (
+                            <>
+                                <Button variant="contained" color="primary" onClick={handleSignInOpen}>
+                                    Login
+                                </Button>
+                                <Button variant="contained" color="primary" onClick={handleSignUpOpen}>
+                                    Sign up
+                                </Button>
+                            </>
+                        )
+                    }
                 </div>
 
                 <Modal
@@ -71,7 +90,7 @@ export default function Navbar() {
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
                  >
-                    <LoginModal />
+                    <LoginModal handleClose={() => setSignInOpen(false)} />
                 </Modal>
 
                 <Modal
@@ -80,7 +99,7 @@ export default function Navbar() {
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
                 >
-                    <RegisterModal />
+                    <RegisterModal handleClose={() => setSignUpOpen(false)}/>
                 </Modal>
             </NavbarStyle>
         </Router>

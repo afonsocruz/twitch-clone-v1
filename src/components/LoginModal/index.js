@@ -8,7 +8,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 
 import LoginModalStyle from './style';
 
-export default function LoginModal() {
+export default function LoginModal({ handleClose }) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,7 +16,7 @@ export default function LoginModal() {
     function handleSubmit() {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then((user) => {
-                console.log(user);
+                handleClose();
             })
             .catch((err) => {
                 console.log(err);

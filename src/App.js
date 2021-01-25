@@ -9,9 +9,9 @@ function App() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        console.log(user);
+        setUser(user);
       } else {
-        console.log('user logged out');
+        setUser(null);
       }
     });
   }, [])

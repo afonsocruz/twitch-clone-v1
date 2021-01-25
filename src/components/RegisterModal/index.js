@@ -8,7 +8,7 @@ import firebase from 'firebase'
 
 import RegisterModalStyle from './styles';
 
-export default function RegisterModal() {
+export default function RegisterModal({ handleClose }) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,7 +16,7 @@ export default function RegisterModal() {
     function handleSubmit() {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((user) => {
-                console.log(user);
+                handleClose();
             })
             .catch((err) => {
                 console.log(err);

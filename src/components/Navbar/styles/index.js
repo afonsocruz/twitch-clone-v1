@@ -62,6 +62,17 @@ export const NavbarStyle = styled.nav `
         margin: 0px 8px;
     }
 
+    .userBtns p {
+        display: inline-block;
+        margin-right: 16px;
+        font-size: 18px;
+    }
+
+    .userBtns p span {
+        color: #853ce6;
+        font-weight: 500;
+    }
+
     .MuiButton-containedPrimary {
         background-color: #853ce6;
     }
