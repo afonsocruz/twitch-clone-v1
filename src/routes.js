@@ -3,6 +3,7 @@ import React from "react";
 import Home from './pages/Home/';
 import Profile from './pages/Profile';
 import Streaming from './pages/Streaming';
+import Search from './pages/Search';
 
 import Navbar from './components/Navbar/';
 import SnackbarComponent from './components/Snackbar';
@@ -23,6 +24,9 @@ export default function Routes() {
             </Route>
             <Route path="/" exact>
                 <Home />
+            </Route>
+            <Route path="/search">
+                <Search />
             </Route>
         </Switch>
     </Router>
