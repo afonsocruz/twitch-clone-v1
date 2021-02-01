@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import ListGames from '../../components/ListGames';
+import { SearchStyle } from './styles';
 
 export default function Search() {
+
     return (
-       <>
-            <h1>Procurar</h1>
-       </> 
+        <SearchStyle>
+            <ListGames/>
+        </SearchStyle>
     )
 }

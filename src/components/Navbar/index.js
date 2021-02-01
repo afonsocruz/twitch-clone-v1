@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useUser } from '../../context/user';
 
@@ -43,16 +43,13 @@ export default function Navbar() {
 
 
     return (
-        <Router>
+        <>
             <NavbarStyle>
                 <div className="wrapInitialContent">
                     <Link to="/">Twitch Clone</Link>
                     <ul>
                         <li>
-                            <Link to={"/esports"}>Esports</Link>
-                        </li>
-                        <li>
-                            <Link to={"/music"}>Music</Link>
+                            <Link to={"/search"}>Procurar</Link>
                         </li>
                     </ul>
                 </div>
@@ -102,6 +99,6 @@ export default function Navbar() {
                     <RegisterModal handleClose={() => setSignUpOpen(false)}/>
                 </Modal>
             </NavbarStyle>
-        </Router>
+        </>
     )
 }

@@ -16,14 +16,14 @@ export default function Routes() {
         <SnackbarComponent/>
         <Navbar/>
         <Switch>
+            <Route path="/" exact>
+                <Home />
+            </Route>
             <Route path="/streaming/:uid" >
                 <Streaming/>
             </Route>
             <Route path="/profile" >
                 <Profile />
-            </Route>
-            <Route path="/" exact>
-                <Home />
             </Route>
             <Route path="/search">
                 <Search />
