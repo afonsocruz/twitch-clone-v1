@@ -10,7 +10,7 @@ export const NavbarStyle = styled.nav `
     -moz-box-shadow: 10px 10px 74px -34px rgba(0,0,0,0.4);
     box-shadow: 10px 10px 74px -34px rgba(0,0,0,0.4);
 
-    a {
+    .wrapInitialContent .logo {
         color: #853ce6;
         font-size: 18px;
         font-weight: 500;
@@ -25,6 +25,7 @@ export const NavbarStyle = styled.nav `
 
     ul li {
         font-size: 16px;
+        position: relative;
     }
 
     li a {
@@ -32,6 +33,16 @@ export const NavbarStyle = styled.nav `
         text-decoration: none;
         font-weight: 500;
         padding: 0px 16px;
+    }
+
+    ul li:after {
+        content: '';
+        position: absolute;
+        background-color: #853ce6;
+        top: 43px;
+        left: 0;
+        height: 6px;
+        width: 100%;
     }
 
     .wrapInitialContent {

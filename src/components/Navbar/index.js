@@ -46,7 +46,7 @@ export default function Navbar() {
         <>
             <NavbarStyle>
                 <div className="wrapInitialContent">
-                    <Link to="/">Twitch Clone</Link>
+                    <Link className="logo" to="/">Twitch Clone</Link>
                     <ul>
                         <li>
                             <Link to={"/search"}>Procurar</Link>

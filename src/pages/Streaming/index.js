@@ -1,7 +1,10 @@
+import {ReactFlvPlayer} from 'react-flv-player'
+
 export default function Streaming() {
     return (
-        <>
-            <h1>Hello streaming</h1>
-        </>
+        <ReactFlvPlayer
+          url = "http://localhost:8000/live/KqLpzMfwsSUKpk8RZuQXBnY7ppK2.flv"
+          isMuted={false}
+        />
     )
 }
